@@ -14,9 +14,11 @@ typedef struct
     int symbols[MAX_STACK_NUM];
 } SymbolStack;
 
+ValueStack getValueStack();
 int pushValueStack(ValueStack* valueStack,int value);
 int popValueStack(ValueStack* valueStack);
 int getValue(ValueStack* valueStack);
+SymbolStack getSymbolStack();
 int pushSymbolStack(SymbolStack* symbolStack,char symbol);
 char popSymbolStack(SymbolStack* symbolStack);
 char getSymbol(SymbolStack* symbolStack);

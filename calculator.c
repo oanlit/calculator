@@ -7,8 +7,8 @@ message Evaluate(const char *expression,int *returnResult){
     int value;
     int result = 0;
     char opera;
-    ValueStack valueStack = {0};
-    SymbolStack symbolStack = {0};
+    ValueStack valueStack = getValueStack();
+    SymbolStack symbolStack = getSymbolStack();
     for (int i = 0; (c = expression[i]) != 0; i++){
         if(isNumber(c)){
             value = TurnToInteger(c);
