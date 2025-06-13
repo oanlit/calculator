@@ -2,7 +2,7 @@
 #include "stack.h"
 
 char operators[] = {'+', '-', '*', '/', '(', ')'};
-message Evaluate(const char *expression,int *returnResult){
+ExceptionCode Evaluate(const char *expression,int *returnResult){
     char c;
     int value;
     int result = 0;
@@ -21,17 +21,17 @@ message Evaluate(const char *expression,int *returnResult){
                 switch (opera)
                 {
                 case '+':
-                    result += popValueStack(&valueStack);
+                    result = popValueStack(&valueStack) + result;
                     break;
                 
                 case '-':
-                    result -= popValueStack(&valueStack);
+                    result = popValueStack(&valueStack) - result;
                     break;
                 case '*':
-                    result *= popValueStack(&valueStack);
+                    result = popValueStack(&valueStack) * result;
                     break;
                 case '/':
-                    result /= popValueStack(&valueStack);
+                    result = popValueStack(&valueStack) / result;
                     break;
                 }
                 pushValueStack(&valueStack,result);

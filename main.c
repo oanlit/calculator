@@ -1,6 +1,7 @@
 #include<stdio.h>
 #include<stdlib.h>
 
+#include"util.h"
 #include "stack.h"
 #include "calculator.h"
 
@@ -15,7 +16,7 @@ void helpMenu(){
 
 char context[MAX_Expression];
 
-message readFile(int* result){
+ExceptionCode readFile(int* result){
     FILE *fp = NULL;
     int value = 0;
     printf("请输入文件路径:");
@@ -28,21 +29,21 @@ message readFile(int* result){
         fscanf(fp, "%s", context);
         fclose(fp);
     }
-    message info = Evaluate(context,result);
+    ExceptionCode info = Evaluate(context,result);
     return info;
 }
 
-message inputLISP(int* result){
+ExceptionCode inputLISP(int* result){
     printf("请输入LISP表达式:");
     scanf("%s",context);
-    message info = Evaluate(context,result);
+    ExceptionCode info = Evaluate(context,result);
     return info;
 }
 
 int main(){
     int option = 1;
     int value = 0;
-    message info;
+    ExceptionCode info;
     while (option)
     {
         printf("请输入选项,输入1查看帮助\n");
